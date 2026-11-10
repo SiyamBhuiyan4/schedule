@@ -56,7 +56,7 @@ import java.util.Map;
  */
 public class DailyAlarm {
     static final File ALARM_FILE = new File("alarms.txt");
-    static final String SOUND = "/System/Library/Sounds/Basso.aiff";
+    static final String SOUND = System.getProperty("user.home") + "/DailyAlarm/siren.wav";  // generated siren tone
     static final String VOLUME = "2";               // afplay volume: 1 = normal, 2 = twice as loud
     static final long RING_MS = 3 * 60 * 1000L;   // max ring time: 3 minutes
     static final long GAP_MS = 1000L;              // pause between sound repeats
