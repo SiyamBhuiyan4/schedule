@@ -56,9 +56,10 @@ import java.util.Map;
  */
 public class DailyAlarm {
     static final File ALARM_FILE = new File("alarms.txt");
-    static final String SOUND = "/System/Library/Sounds/Hero.aiff";
+    static final String SOUND = "/System/Library/Sounds/Basso.aiff";
+    static final String VOLUME = "2";               // afplay volume: 1 = normal, 2 = twice as loud
     static final long RING_MS = 3 * 60 * 1000L;   // max ring time: 3 minutes
-    static final long GAP_MS = 2000L;              // pause between sound repeats
+    static final long GAP_MS = 1000L;              // pause between sound repeats
     static final DateTimeFormatter TIME_FMT = DateTimeFormatter.ofPattern("HH:mm");
     static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("EEE, d MMM yyyy", Locale.ENGLISH);
     static final String ALL_DAYS = "1234567";
@@ -336,7 +337,7 @@ public class DailyAlarm {
 
     static void playOnce() {
         try {
-            player = new ProcessBuilder("afplay", SOUND).start();
+            player = new ProcessBuilder("afplay", "-v", VOLUME, SOUND).start();
             player.waitFor();
         } catch (Exception ignored) {
             // afplay missing or interrupted; loop tries again until time runs out
