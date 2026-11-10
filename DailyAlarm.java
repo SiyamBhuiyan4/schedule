@@ -56,10 +56,10 @@ import java.util.Map;
  */
 public class DailyAlarm {
     static final File ALARM_FILE = new File("alarms.txt");
-    static final String SOUND = System.getProperty("user.home") + "/DailyAlarm/siren.wav";  // generated siren tone
+    static final String SOUND = System.getProperty("user.home") + "/DailyAlarm/siren_raid.wav";  // generated air-raid siren
     static final String VOLUME = "2";               // afplay volume: 1 = normal, 2 = twice as loud
     static final long RING_MS = 3 * 60 * 1000L;   // max ring time: 3 minutes
-    static final long GAP_MS = 1000L;              // pause between sound repeats
+    static final long GAP_MS = 0L;                 // no pause: sound loops continuously
     static final DateTimeFormatter TIME_FMT = DateTimeFormatter.ofPattern("HH:mm");
     static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("EEE, d MMM yyyy", Locale.ENGLISH);
     static final String ALL_DAYS = "1234567";
