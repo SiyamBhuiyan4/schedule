@@ -78,6 +78,12 @@ public class DailyAlarm {
 
     public static void main(String[] args) {
         loadAlarms();
+        // Any mouse click inside this app's windows stops a ringing alarm
+        java.awt.Toolkit.getDefaultToolkit().addAWTEventListener(event -> {
+            if (ringing && event.getID() == java.awt.event.MouseEvent.MOUSE_PRESSED) {
+                stopAlarm();
+            }
+        }, java.awt.AWTEvent.MOUSE_EVENT_MASK);
         SwingUtilities.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
